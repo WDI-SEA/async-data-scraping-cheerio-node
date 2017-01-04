@@ -76,6 +76,22 @@ request(URL, function(error, response, data) {
 });
 ```
 
+## Database Integration
+This program also interacts with a database. The database stores URLs and HTML.
+The database is used to prevent us from ever downloading the same webpage twice.
+The program queries the database to see if the URL has ever been accessed and only
+downloads the HTML if it's never been accessed. If it's never been accessed then
+it downloads the HTML and saves it to the database, associated with the URL.
+
+It's simply the polite thing to do.
+
+```bash
+createdb scrapekexp
+sequelize init
+sequelize model:create --name scrapeurl --attributes url:text,html:text
+sequelize db:migrate
+```
+
 ## Last Thoughts
 Remember, data scraping is messy, fragile and fickle! There's often inconsitent
 or missing data. Notice how in the HTML example above I forgot to write PM after

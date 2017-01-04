@@ -75,6 +75,17 @@ request(URL, function(error, response, data) {
   });
 });
 
+## Last Thoughts
+Remember, data scraping is messy, fragile and fickle! There's often inconsitent
+or missing data. Notice how in the HTML example above I forgot to write PM after
+one timestamp. Well that's a minor error. You're bound to see much worse errors.
+
+Also, your data source can disappear at any time. The website might change the
+design your scraper depends on, or they may make a page inaccessible entirely!
+Basically, don't rely on data-scraping for life-or-death critical operations.
+
+Be aware! Get scrappy! Good luck!
+
 ```
 
 ## Licensing

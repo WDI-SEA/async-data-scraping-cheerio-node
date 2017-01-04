@@ -74,6 +74,7 @@ request(URL, function(error, response, data) {
     console.log();
   });
 });
+```
 
 ## Last Thoughts
 Remember, data scraping is messy, fragile and fickle! There's often inconsitent
@@ -85,8 +86,6 @@ design your scraper depends on, or they may make a page inaccessible entirely!
 Basically, don't rely on data-scraping for life-or-death critical operations.
 
 Be aware! Get scrappy! Good luck!
-
-```
 
 ## Licensing
 All content is licensed under a CC­BY­NC­SA 4.0 license.

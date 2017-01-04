@@ -47,6 +47,36 @@ and convenient modules.
 We can use these libraries together to write programs that download webpages
 and pick data out of them. Take a look at the code to see how it works!
 
+Basically:
+
+```
+request(URL, function(error, response, data) {
+  // load the entire HTML into cheerio
+  var $ = cheerio.load(data);
+
+  // search for every div with an AristName class
+  var artists = $(".ArtistName");
+
+  // iterate through the list of found artists
+  artists.each(function(index, artist) {
+    // the each function gives us the raw HTML element.
+    // convert the element back to a cheerio
+    artist = $(artist);
+
+    // Notice the .TrackName div is right next to our AristName div. Divs next
+    // to each other are called siblings. Cheerio docs describe the 'next()'
+    // method as: Gets the next sibling of the first selected element. Convenient.
+    track = artist.next();
+
+    // Print the results!
+    console.log("Arist:", artist.text());
+    console.log(" Song:", track.text());
+    console.log();
+  });
+});
+
+```
+
 ## Licensing
 All content is licensed under a CC­BY­NC­SA 4.0 license.
 All software code is licensed under GNU GPLv3. For commercial use or alternative licensing, please contact legal@ga.co.

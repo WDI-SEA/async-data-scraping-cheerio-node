@@ -1,5 +1,6 @@
 var cheerio = require('cheerio');
 var request = require('request');
+var db = require('./models');
 
 var URL = 'http://kexp.org/playlist';
 
@@ -23,9 +24,32 @@ off this page. "AristName" and "TrackName" are great.
 </div>
  */
 
-request(URL, function(error, response, data) {
+URL = 'http://kexp.org/playlist/2005/1/4/9pm';
+db.scrapeurl.find({where: {url: URL}}).then(function (scrapeurl) {
+  console.log("hadone?:", URL);
+  if (scrapeurl === null) {
+    request(URL, function(error, response, data) {
+      var parsedOk = parseHTML(data);
+      if (parsedOk) {
+        db.scrapeurl.create({
+          url: URL,
+          html: data
+        });
+
+        console.log("created");
+      } else {
+        console.log("bad parse");
+      }
+    });
+  } else {
+    parseHTML(scrapeurl.html);
+    console.log("loaded");
+  }
+});
+
+function parseHTML(html) {
 	// load the entire HTML into cheerio
-  var $ = cheerio.load(data);
+  var $ = cheerio.load(html);
 
 	// search for every div with an AristName class
   var artists = $(".ArtistName");
@@ -46,4 +70,8 @@ request(URL, function(error, response, data) {
     console.log(" Song:", track.text());
     console.log();
   });
-});
+
+  // return true if everything went ok so we know if the HTML
+  // should be saved to the database
+  return true;
+}

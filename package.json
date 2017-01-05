@@ -1,7 +1,7 @@
 {
   "name": "scraper",
   "version": "1.0.0",
-  "description": "",
+  "description": "We can use node and npm modules to scrape data off websites. This task is necessary when you need to interact with data that hasn't been made available in it's own well-formatted database. Data Scraping relies on extracting data out of the semantic structure of HTML.",
   "main": "scrape.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -15,5 +15,13 @@
     "pg-hstore": "^2.3.2",
     "request": "^2.79.0",
     "sequelize": "^3.28.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tommy-Lim/async-data-scraping-cheerio-node.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Tommy-Lim/async-data-scraping-cheerio-node/issues"
+  },
+  "homepage": "https://github.com/Tommy-Lim/async-data-scraping-cheerio-node#readme"
 }
